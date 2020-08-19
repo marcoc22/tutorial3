@@ -1,7 +1,7 @@
 package main
 
 import (
-    pb "github.com/arce/gowebservices/booksapp"
+    pb "github.com/marcoc22/tutorial3/booksapp"
     "google.golang.org/grpc"
     "log"
     "net"
