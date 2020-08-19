@@ -1,4 +1,4 @@
-module github.com/arce/gowebservices
+module github.com/marcoc22/tutorial3
 
 require (
     github.com/golang/protobuf v1.4.1
