@@ -1,26 +1,27 @@
 package main
 
 import (
-    pb "github.com/marcoc22/tutorial3/booksapp"
-    "google.golang.org/grpc"
-    "log"
-    "net"
-    "os"
+	"log"
+	"net"
+	"os"
+
+	pb "github.com/marcoc22/tutorial3/booksapp"
+	"google.golang.org/grpc"
 )
 
 func main() {
-    port := os.Getenv("PORT")
-    lis, err := net.Listen("tcp", ":"+port)
-    if err != nil {
-        log.Fatalf("failed to listen: %v", err)
-    }
+	port := os.Getenv("PORT")
+	lis, err := net.Listen("tcp", ":"+port)
+	if err != nil {
+		log.Fatalf("failed to listen: %v", err)
+	}
 
-    s := grpc.NewServer()
-    pb.RegisterBookInfoServer(s, &server{})
+	s := grpc.NewServer()
+	pb.RegisterBookInfoServer(s, &server{})
 
-    log.Printf("Starting gRPC listener on port " + port)
+	log.Printf("Starting gRPC listener on port " + port)
 
-    if err := s.Serve(lis); err != nil {
-        log.Fatalf("failed to serve: %v", err)
-    }
+	if err := s.Serve(lis); err != nil {
+		log.Fatalf("failed to serve: %v", err)
+	}
 }
